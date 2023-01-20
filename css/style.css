@@ -1,0 +1,56 @@
+html, body {
+    height: 100vh;
+    overflow: hidden;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5vmin;
+}
+
+.keyboard {
+    width: 60vmin;
+    flex-shrink: 0;
+    display: flex;
+}
+
+.verticalButtonContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.buttonContainer {
+    flex: 0 0 470px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.genericButton {
+    background-color: black;
+    color: white;
+    border: 4px solid white;
+    width: 8vmin;
+    margin: 20px;
+    font-size: 3vw;
+    font-family: 'VT323', monospace;
+}
+
+.squareButton {
+    aspect-ratio: 1;
+}
+
+.rectangleButton {
+    aspect-ratio: 1/2;
+    margin: 20px 0;
+}
+
+p {
+    font-family: 'VT323', monospace;
+}
+
+.outputText {
+    color: white;
+    font-size: 10vw;
+    margin: 5vmin 0;
+}
