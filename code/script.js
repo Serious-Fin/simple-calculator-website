@@ -35,14 +35,8 @@ function operate(num1, operator, num2) {
 }
 
 function buttonClicked(symbol) {
-    /*if (typeof +symbol === 'number') {
-        const output = document.querySelector('p#outputText');
-        output.textContent = symbol;
-        DISPLAY_VALUE = +symbol;
-        console.log(DISPLAY_VALUE);
-    }*/
-
     const output = document.querySelector('p#outputText');
+    /*12 + 7 - 5 * 3 = should yield 42*/
 
     if (!isNaN(symbol)){
         console.log(`number ${+symbol} typed`);
@@ -68,11 +62,20 @@ function buttonClicked(symbol) {
         }
     }
     else if (symbol === '+' || symbol === '-' || symbol === '*' || symbol === '/') {
-        if (FIRST_NUMBER !== null) {
+        if (FIRST_NUMBER !== null && SECOND_NUMBER === null) {
             console.log(`Operator ${symbol} typed`)
             OPERATOR = symbol;
             output.textContent = OPERATOR;
-        } 
+        }
+        else if (FIRST_NUMBER !== null && SECOND_NUMBER !== null) {
+            console.log(`Operator ${symbol} typed CALCULATING AND CONTINUEING`)
+            let result = operate(+FIRST_NUMBER, OPERATOR, +SECOND_NUMBER);
+            output.textContent = result;
+
+            FIRST_NUMBER = result;
+            OPERATOR = symbol;
+            SECOND_NUMBER = null;
+        }
     }
     else if (symbol === '=') {
         let result = operate(+FIRST_NUMBER, OPERATOR, +SECOND_NUMBER);
