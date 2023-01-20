@@ -35,3 +35,23 @@ function updateDisplay(symbol) {
         output.textContent = symbol;
     }
 }
+
+function buttonClicked(event) {
+    this.classList.add('pressedButton');
+}
+
+function removeClass(event) {
+    if (event.propertyName !== 'transform') return;
+
+    this.classList.remove('pressedButton');
+}
+
+
+const buttonNodeArray = document.querySelectorAll("button.genericButton");
+buttonNodeArray.forEach(button => {
+    button.addEventListener('click', buttonClicked);
+});
+
+buttonNodeArray.forEach(button => {
+    button.addEventListener('transitionend', removeClass);
+});
