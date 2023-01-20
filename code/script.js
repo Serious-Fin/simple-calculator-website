@@ -28,3 +28,10 @@ function operate(num1, operator, num2) {
         return divide(num1, num2);
     }
 }
+
+function updateDisplay(symbol) {
+    if (typeof +symbol === 'number') {
+        const output = document.querySelector('p#outputText');
+        output.textContent = symbol;
+    }
+}

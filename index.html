@@ -10,23 +10,23 @@
         <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     </head>
     <body>
-        <p class="outputText">Calculator</p>
+        <p id="outputText">Calculator</p>
 
         <div class="keyboard">
             <div class="buttonContainer">
-                <button class="genericButton squareButton">7</button>
-                <button class="genericButton squareButton">8</button>
-                <button class="genericButton squareButton">9</button>
+                <button class="genericButton squareButton" onclick="updateDisplay('7')">7</button>
+                <button class="genericButton squareButton" onclick="updateDisplay('8')">8</button>
+                <button class="genericButton squareButton" onclick="updateDisplay('9')">9</button>
                 <button class="genericButton squareButton">+</button>
-                <button class="genericButton squareButton">4</button>
-                <button class="genericButton squareButton">5</button>
-                <button class="genericButton squareButton">6</button>
+                <button class="genericButton squareButton" onclick="updateDisplay('4')">4</button>
+                <button class="genericButton squareButton" onclick="updateDisplay('5')">5</button>
+                <button class="genericButton squareButton" onclick="updateDisplay('6')">6</button>
                 <button class="genericButton squareButton">-</button>
-                <button class="genericButton squareButton">1</button>
-                <button class="genericButton squareButton">2</button>
-                <button class="genericButton squareButton">3</button>
+                <button class="genericButton squareButton" onclick="updateDisplay('1')">1</button>
+                <button class="genericButton squareButton" onclick="updateDisplay('2')">2</button>
+                <button class="genericButton squareButton" onclick="updateDisplay('3')">3</button>
                 <button class="genericButton squareButton">*</button>
-                <button class="genericButton squareButton">0</button>
+                <button class="genericButton squareButton" onclick="updateDisplay('0')">0</button>
                 <button class="genericButton squareButton">.</button>
                 <button class="genericButton squareButton">=</button>
                 <button class="genericButton squareButton">/</button>
