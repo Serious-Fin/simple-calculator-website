@@ -41,22 +41,18 @@ function buttonClicked(symbol) {
     if (!isNaN(symbol)){
         console.log(`number ${+symbol} typed`);
         if (FIRST_NUMBER === null) {
-            console.log('printing first');
             FIRST_NUMBER = symbol;
             output.textContent = FIRST_NUMBER;
         }
         else if (FIRST_NUMBER !== null && OPERATOR === null) {
-            console.log('printing first');
             FIRST_NUMBER += symbol;
             output.textContent = FIRST_NUMBER;
         }
         else if (SECOND_NUMBER === null && OPERATOR !== null && FIRST_NUMBER !== null) {
-            console.log('printing second');
             SECOND_NUMBER = symbol;
             output.textContent = SECOND_NUMBER;
         }
         else if (SECOND_NUMBER !== null) {
-            console.log('printing second');
             SECOND_NUMBER += symbol;
             output.textContent = SECOND_NUMBER;
         }
@@ -84,6 +80,8 @@ function buttonClicked(symbol) {
             result = parseFloat(result.toFixed(5));
             output.textContent = result;
         }
+
+        document.getElementById('dotButton').disabled = false;
     }
     else if (symbol === '=') {
         if (FIRST_NUMBER !== null && OPERATOR !== null && SECOND_NUMBER !== null) {
@@ -101,11 +99,35 @@ function buttonClicked(symbol) {
             FIRST_NUMBER = result;
             OPERATOR = null;
             SECOND_NUMBER = null;
+
+            document.getElementById('dotButton').disabled = false;
         }
         else {
             const equalsButton = document.querySelector("#equalsButton");
             equalsButton.classList.add('errorButtonPress');
         }
+    }
+    else if (symbol === '.') {
+        if (OPERATOR === null) {
+            if (FIRST_NUMBER === null) {
+                FIRST_NUMBER = '0.';
+            }
+            else {
+                FIRST_NUMBER += '.';
+            }
+            output.textContent = FIRST_NUMBER;
+        }
+        else {
+            if (SECOND_NUMBER === null) {
+                SECOND_NUMBER = '0.';
+            }
+            else {
+                SECOND_NUMBER += '.';
+            }
+            output.textContent = SECOND_NUMBER;
+        }
+
+        document.getElementById('dotButton').disabled = true;
     }
 
     const miniOutput = document.querySelector('#currentExpression');
