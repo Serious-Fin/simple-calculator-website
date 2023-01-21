@@ -80,15 +80,21 @@ function buttonClicked(symbol) {
         }
     }
     else if (symbol === '=') {
-        let result = operate(+FIRST_NUMBER, OPERATOR, +SECOND_NUMBER);
+        if (FIRST_NUMBER !== null && OPERATOR !== null && SECOND_NUMBER !== null) {
+            let result = operate(+FIRST_NUMBER, OPERATOR, +SECOND_NUMBER);
 
-        result = parseFloat(result.toFixed(5));
+            result = parseFloat(result.toFixed(5));
 
-        output.textContent = result;
+            output.textContent = result;
 
-        FIRST_NUMBER = result;
-        OPERATOR = null;
-        SECOND_NUMBER = null;
+            FIRST_NUMBER = result;
+            OPERATOR = null;
+            SECOND_NUMBER = null;
+        }
+        else {
+            const equalsButton = document.querySelector("#equalsButton");
+            equalsButton.classList.add('errorButtonPress');
+        }
     }
 
     console.log(`first: ${FIRST_NUMBER}; second: ${SECOND_NUMBER}; operator: ${OPERATOR}`);
@@ -100,9 +106,23 @@ function buttonClickedAnimation(event) {
 }
 
 function removeClass(event) {
-    if (event.propertyName !== 'transform') return;
+    
+    if (event.propertyName === 'transform') {
+        this.classList.remove('pressedButton');
+    }
 
-    this.classList.remove('pressedButton');
+    if (event.propertyName === 'background-color') {
+        this.classList.remove('errorButtonPress');
+    }
+}
+
+function clearData() {
+    FIRST_NUMBER = null;
+    SECOND_NUMBER = null;
+    OPERATOR = null;
+
+    const output = document.querySelector('p#outputText');
+    output.textContent = "Calculator";
 }
 
 

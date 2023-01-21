@@ -51,6 +51,12 @@ html, body {
     background-color: rgb(34, 34, 34);
 }
 
+.errorButtonPress {
+    transform: scale(0.9);
+    background-color: rgb(51, 25, 25);
+    border-color: red;
+}
+
 button:hover {
     background-color: rgb(34, 34, 34);
 }

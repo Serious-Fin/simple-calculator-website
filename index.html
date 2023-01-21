@@ -28,12 +28,12 @@
                 <button class="genericButton squareButton" onclick="buttonClicked('*')">*</button>
                 <button class="genericButton squareButton" onclick="buttonClicked('0')">0</button>
                 <button class="genericButton squareButton">.</button>
-                <button class="genericButton squareButton" onclick="buttonClicked('=')">=</button>
+                <button class="genericButton squareButton" onclick="buttonClicked('=')" id="equalsButton">=</button>
                 <button class="genericButton squareButton" onclick="buttonClicked('/')">/</button>
             </div>
             <div class="verticalButtonContainer">
                 <button class="genericButton rectangleButton">C</button>
-                <button class="genericButton rectangleButton">AC</button>
+                <button class="genericButton rectangleButton" onclick="clearData()">AC</button>
             </div>
         </div>
     </body>
@@ -41,9 +41,6 @@
 
 <!--
     TODO:
-    - Round decimal numbers
-    - Don't let = be pressed before all numbers are entered
-    - Pressing clear should wipe out all existing data
     - Display an error message when division by 0 occurs
 
     BONUS:
