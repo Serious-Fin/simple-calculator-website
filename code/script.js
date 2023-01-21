@@ -70,15 +70,20 @@ function buttonClicked(symbol) {
         else if (FIRST_NUMBER !== null && SECOND_NUMBER !== null) {
             console.log(`Operator ${symbol} typed CALCULATING AND CONTINUEING`)
             let result = operate(+FIRST_NUMBER, OPERATOR, +SECOND_NUMBER);
-            output.textContent = result;
 
             FIRST_NUMBER = result;
             OPERATOR = symbol;
             SECOND_NUMBER = null;
+
+            result = parseFloat(result.toFixed(5));
+            output.textContent = result;
         }
     }
     else if (symbol === '=') {
         let result = operate(+FIRST_NUMBER, OPERATOR, +SECOND_NUMBER);
+
+        result = parseFloat(result.toFixed(5));
+
         output.textContent = result;
 
         FIRST_NUMBER = result;
