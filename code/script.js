@@ -107,7 +107,7 @@ function buttonClicked(symbol) {
             if (FIRST_NUMBER === null) {
                 FIRST_NUMBER = '0.';
             }
-            else {
+            else if (FIRST_NUMBER % 1 === 0){
                 FIRST_NUMBER += '.';
             }
             output.textContent = FIRST_NUMBER;
@@ -116,7 +116,7 @@ function buttonClicked(symbol) {
             if (SECOND_NUMBER === null) {
                 SECOND_NUMBER = '0.';
             }
-            else {
+            else if (SECOND_NUMBER % 1 === 0){
                 SECOND_NUMBER += '.';
             }
             output.textContent = SECOND_NUMBER;
