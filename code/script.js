@@ -69,6 +69,12 @@ function buttonClicked(symbol) {
         }
         else if (FIRST_NUMBER !== null && SECOND_NUMBER !== null) {
             console.log(`Operator ${symbol} typed CALCULATING AND CONTINUEING`)
+
+            if (OPERATOR === '/' && SECOND_NUMBER === "0") {
+                clearData("Error");
+                return;
+            }
+
             let result = operate(+FIRST_NUMBER, OPERATOR, +SECOND_NUMBER);
 
             FIRST_NUMBER = result;
@@ -81,6 +87,11 @@ function buttonClicked(symbol) {
     }
     else if (symbol === '=') {
         if (FIRST_NUMBER !== null && OPERATOR !== null && SECOND_NUMBER !== null) {
+            if (OPERATOR === '/' && SECOND_NUMBER === "0") {
+                clearData("Error");
+                return;
+            }
+
             let result = operate(+FIRST_NUMBER, OPERATOR, +SECOND_NUMBER);
 
             result = parseFloat(result.toFixed(5));
@@ -116,13 +127,13 @@ function removeClass(event) {
     }
 }
 
-function clearData() {
+function clearData(text) {
     FIRST_NUMBER = null;
     SECOND_NUMBER = null;
     OPERATOR = null;
 
     const output = document.querySelector('p#outputText');
-    output.textContent = "Calculator";
+    output.textContent = text;
 }
 
 
