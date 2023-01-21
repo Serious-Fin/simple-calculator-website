@@ -36,10 +36,8 @@ function operate(num1, operator, num2) {
 
 function buttonClicked(symbol) {
     const output = document.querySelector('p#outputText');
-    /*12 + 7 - 5 * 3 = should yield 42*/
 
     if (!isNaN(symbol)){
-        console.log(`number ${+symbol} typed`);
         if (FIRST_NUMBER === null) {
             FIRST_NUMBER = symbol;
             output.textContent = FIRST_NUMBER;
@@ -59,13 +57,10 @@ function buttonClicked(symbol) {
     }
     else if (symbol === '+' || symbol === '-' || symbol === '*' || symbol === '/') {
         if (FIRST_NUMBER !== null && SECOND_NUMBER === null) {
-            console.log(`Operator ${symbol} typed`)
             OPERATOR = symbol;
             output.textContent = OPERATOR;
         }
         else if (FIRST_NUMBER !== null && SECOND_NUMBER !== null) {
-            console.log(`Operator ${symbol} typed CALCULATING AND CONTINUEING`)
-
             if (OPERATOR === '/' && SECOND_NUMBER === "0") {
                 clearData("Error");
                 return;
@@ -83,7 +78,7 @@ function buttonClicked(symbol) {
 
         document.getElementById('dotButton').disabled = false;
     }
-    else if (symbol === '=') {
+    else if (symbol === '=' || symbol === 'Enter') {
         if (FIRST_NUMBER !== null && OPERATOR !== null && SECOND_NUMBER !== null) {
             if (OPERATOR === '/' && SECOND_NUMBER === "0") {
                 clearData("Error");
@@ -129,11 +124,12 @@ function buttonClicked(symbol) {
 
         document.getElementById('dotButton').disabled = true;
     }
-    else if (symbol === 'backspace') {
+    else if (symbol === 'Backspace') {
         backspace();
     }
-
-    console.log(`f:${FIRST_NUMBER} oper:${OPERATOR} s:${SECOND_NUMBER}`);
+    else if (symbol === 'Escape') {
+        clearData('Calculator');
+    }
 
     const miniOutput = document.querySelector('#currentExpression');
     let first = FIRST_NUMBER !== null ? parseFloat((+FIRST_NUMBER).toFixed(4)) : '';
@@ -194,6 +190,14 @@ function backspace() {
     }
 }
 
+function keyboardPressed(event) {
+    console.log(event);0
+    const availableKeyEvents = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.', '/', '*', '-', '+', 'Enter', 'Backspace', 'Escape']
+    if (availableKeyEvents.includes(event.key)) {
+        buttonClicked(event.key);
+    }
+}
+
 
 const buttonNodeArray = document.querySelectorAll("button.genericButton");
 buttonNodeArray.forEach(button => {
@@ -203,3 +207,5 @@ buttonNodeArray.forEach(button => {
 buttonNodeArray.forEach(button => {
     button.addEventListener('transitionend', removeClass);
 });
+
+window.addEventListener('keydown', keyboardPressed);
