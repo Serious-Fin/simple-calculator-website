@@ -108,7 +108,11 @@ function buttonClicked(symbol) {
         }
     }
 
-    console.log(`first: ${FIRST_NUMBER}; second: ${SECOND_NUMBER}; operator: ${OPERATOR}`);
+    const miniOutput = document.querySelector('#currentExpression');
+    let first = FIRST_NUMBER !== null ? parseFloat((+FIRST_NUMBER).toFixed(4)) : '';
+    let oper = OPERATOR !== null ? OPERATOR : '';
+    let second = SECOND_NUMBER !== null ? parseFloat((+SECOND_NUMBER).toFixed(4)) : '';
+    miniOutput.textContent = `${first} ${oper} ${second}`;
 
 }
 
@@ -134,6 +138,9 @@ function clearData(text) {
 
     const output = document.querySelector('p#outputText');
     output.textContent = text;
+
+    const miniOutput = document.querySelector('#currentExpression');
+    miniOutput.textContent = '';
 }
 
 

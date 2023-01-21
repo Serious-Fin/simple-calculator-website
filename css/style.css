@@ -5,7 +5,7 @@ html, body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 5vmin;
+    gap: 2.5vmin;
 }
 
 .keyboard {
@@ -68,5 +68,13 @@ p {
 #outputText {
     color: white;
     font-size: 10vw;
-    margin: 5vmin 0;
+    margin-top: 5vmin;
+    margin-bottom: 2.5vmin;
+}
+
+#currentExpression {
+    color: white;
+    font-size: 3.5vw;
+    align-self: flex-end;
+    margin: 1vmin 0;
 }
