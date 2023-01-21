@@ -73,7 +73,7 @@ function buttonClicked(symbol) {
 
             let result = operate(+FIRST_NUMBER, OPERATOR, +SECOND_NUMBER);
 
-            FIRST_NUMBER = result;
+            FIRST_NUMBER = String(result);
             OPERATOR = symbol;
             SECOND_NUMBER = null;
 
@@ -96,7 +96,7 @@ function buttonClicked(symbol) {
 
             output.textContent = result;
 
-            FIRST_NUMBER = result;
+            FIRST_NUMBER = String(result);
             OPERATOR = null;
             SECOND_NUMBER = null;
 
@@ -129,6 +129,11 @@ function buttonClicked(symbol) {
 
         document.getElementById('dotButton').disabled = true;
     }
+    else if (symbol === 'backspace') {
+        backspace();
+    }
+
+    console.log(`f:${FIRST_NUMBER} oper:${OPERATOR} s:${SECOND_NUMBER}`);
 
     const miniOutput = document.querySelector('#currentExpression');
     let first = FIRST_NUMBER !== null ? parseFloat((+FIRST_NUMBER).toFixed(4)) : '';
@@ -163,6 +168,30 @@ function clearData(text) {
 
     const miniOutput = document.querySelector('#currentExpression');
     miniOutput.textContent = '';
+}
+
+function backspace() {
+    if (SECOND_NUMBER !== null) {
+        SECOND_NUMBER = SECOND_NUMBER.substring(0, SECOND_NUMBER.length - 1);
+
+        if (SECOND_NUMBER.length === 0) {
+            SECOND_NUMBER = null;
+        }
+    }
+    else if (SECOND_NUMBER === null && OPERATOR !== null) {
+        OPERATOR = OPERATOR.substring(0, OPERATOR.length - 1);
+
+        if (OPERATOR.length === 0) {
+            OPERATOR = null;
+        }
+    }
+    else if (SECOND_NUMBER === null && OPERATOR === null && FIRST_NUMBER !== null) {
+        FIRST_NUMBER = FIRST_NUMBER.substring(0, FIRST_NUMBER.length - 1);
+
+        if (FIRST_NUMBER.length === 0) {
+            FIRST_NUMBER = null;
+        }
+    }
 }
 
 
